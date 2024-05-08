@@ -59,6 +59,14 @@ app.use(cors());
 app.use(logger('dev'));
 //custom middleware
 app.use(function(req, res, next) {
+if(req.query.user) {
+    next()
+} else {
+    res.redirect('/')   
+    }
+});
+
+app.use(function(req, res, next) {
     req.time = new Date();
     next();
 });
@@ -77,8 +85,8 @@ app.get('/test', function(req, res) {
 });
 
 app.get('/favorite-food', function(req, res) {
-    console.log('This is our fav-food route')
-    res.json('Tacos, Pizza, & Seafood' )
+    console.log('This is our fav-food route');
+    res.json('Tacos, Pizza, & Seafood' );
 });
 
 app.get('/favorite-movie', function(req, res) {

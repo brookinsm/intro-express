@@ -12,7 +12,7 @@
 
   <script>
     document.querySelector('button').addEventListener('click', async function() {
-      const response = await fetch('http://localhost:3000/article/0')
+      const response = await fetch('http://localhost:3000/favorite-food?user=michael')
       const data = await response.json()
       console.log(data)
     })
