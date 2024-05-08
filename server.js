@@ -57,6 +57,12 @@ const app = express();
 //MIDDLEWARE PIPELINE
 app.use(cors());
 app.use(logger('dev'));
+//custom middleware
+app.use(function(req, res, next) {
+    req.time = new Date();
+    next();
+});
+
 
 //Routes
 //Adding new route to web app
