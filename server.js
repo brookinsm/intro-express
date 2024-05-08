@@ -1,3 +1,5 @@
+//dummy data
+
 const ARTICLES = [
     {
         id: 0,
@@ -41,17 +43,22 @@ const VEGGIES = [
         description: 'little cabbage'
     }
 ];
-
+//Required modules
 //We need to require express pkg
 const express = require('express');
+const cors = require('cors');
+const logger = require('morgan');
+
 //Setting a port to run sever
 const PORT = process.env.PORT || 3000;
 //Using express package to create new express web app
 const app = express();
 
-//MIDDLEWARE
+//MIDDLEWARE PIPELINE
+app.use(cors());
+app.use(logger('dev'));
 
-
+//Routes
 //Adding new route to web app
 //This route will respond to GET request to empty endpoint
 app.get('/', function(req, res) {
