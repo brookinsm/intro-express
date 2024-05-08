@@ -49,6 +49,9 @@ const PORT = process.env.PORT || 3000;
 //Using express package to create new express web app
 const app = express();
 
+//MIDDLEWARE
+
+
 //Adding new route to web app
 //This route will respond to GET request to empty endpoint
 app.get('/', function(req, res) {
@@ -87,6 +90,7 @@ app.get('/article/:slug', function(req, res) {
     res.json(article);
 });
 
+//find params
 app.get('/find', function(req, res) {
     console.log(req.query);
     let produce
@@ -95,7 +99,7 @@ app.get('/find', function(req, res) {
     } else if (req.query.type === 'veggies') {
         produce = VEGGIES.find(veggie => veggie.name === req.query.name);
     } else {
-        produce = {data: 'not found'};
+        produce = {data: '404: not found'};
     }
     res.json(produce);
 });
